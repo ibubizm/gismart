@@ -5,7 +5,7 @@ import close from './close.png'
 
 const titles = ['none', 'ms', 'miss', 'dr', 'mr', 'mrs']
 
-export const Form = ({ visible }) => {
+export const Form = ({ visible, setFormData }) => {
     const [firstName, setFirstName] = useState('')
     const [lastName, setLastName] = useState('')
     const [email, setEmail] = useState('')
@@ -95,8 +95,8 @@ export const Form = ({ visible }) => {
                 picture,
                 email,
             }
+            setFormData(obj)
             createData(obj)
-                .then(data => console.log(data))
         }
         else {
             const obj = {
@@ -106,8 +106,8 @@ export const Form = ({ visible }) => {
                 picture,
                 email,
             }
+            setFormData(obj)
             createData(obj)
-                .then(data => console.log(data))
         }
         visible(false)
     }

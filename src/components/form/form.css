@@ -11,6 +11,7 @@
     box-shadow: 2px 11px 16px rgba(100, 105, 108, 0.24);
 }
 
+
 .header{
     display: flex;
     position: relative;
@@ -65,4 +66,21 @@
 
 .close{
     cursor: pointer;
+}
+
+@media(max-width: 450px){
+    .form{
+        width: auto;
+        font-size: 30px;
+    }
+
+    .form input{
+        font-size: 30px;
+        margin-top: 10px;
+    }
+    
+    select{
+        font-size: 30px;
+    }
+
 }

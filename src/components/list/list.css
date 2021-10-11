@@ -40,10 +40,14 @@
     margin-right: 10px;
 }
 
-@media(max-width: 375px){
+@media(max-width: 414px){
     .container{
         display: flex;
         width: 100%;
+        grid-template-columns: 1fr;
+    }
+
+    .user__list{
         grid-template-columns: 1fr;
     }
 }

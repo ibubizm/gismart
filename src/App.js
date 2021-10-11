@@ -13,6 +13,8 @@ function App() {
   const [itemsPerPage, setItemsPerPage] = useState(50)
   const [totalItems, setTotalItems] = useState(0)
 
+  const [formData, setFormData] = useState({})
+
   const getData = async (page) => {
     const response = await fetch(`https://dummyapi.io/data/v1/user?page=${page}&limit=${itemsPerPage}`, {
       method: 'GET',
@@ -29,7 +31,7 @@ function App() {
 
   useEffect(() => {
     getData(currentPage)
-  }, [currentPage, totalItems])
+  }, [currentPage, totalItems, formData])
 
   return (
     <div className="App">
@@ -41,11 +43,14 @@ function App() {
         totalItems={totalItems}
         setCurrentPage={setCurrentPage}
         currentPage={currentPage} />
-      {visible ?
-        <Form visible={setVisible} />
-        :
-        <button onClick={() => setVisible(true)}>create user</button>
-      }
+      <div className="container" style={{ marginBottom: 30 }}>
+        {visible ?
+          <Form visible={setVisible} setFormData={setFormData} />
+          :
+          <button className="btn" onClick={() => setVisible(true)}>create user</button>
+        }
+
+      </div>
     </div>
   );
 }

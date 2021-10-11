@@ -1,6 +1,7 @@
 .pages{
     display: flex;
     justify-content: center;
+    padding-inline-start: 0;
 }
     
 .pages li{
@@ -29,3 +30,4 @@ li:hover{
 .active{
     background-color: rgba(31, 155, 238, 0.664);
 }
+
