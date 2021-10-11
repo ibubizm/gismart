@@ -1,0 +1,49 @@
+
+.container{
+    width: 1200px;
+    margin: 0 auto;
+}
+
+
+
+.user__list{
+    display: grid;
+    list-style: none;
+    padding-inline-start: 0;
+    grid-template-columns: 1fr 1fr 1fr;
+}
+.item{
+    display: flex;
+    margin: 10px; 
+    border-radius: 7px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    font-size: 24px;
+    height: 100px;
+    margin-bottom: 10px;
+}
+
+.item:hover{
+    transform: scale(1.05);
+    cursor: pointer;
+}
+
+.name__block{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.firstName{
+    margin: 0 5px;
+}
+
+.picture{
+    margin-right: 10px;
+}
+
+@media(max-width: 375px){
+    .container{
+        display: flex;
+        width: 100%;
+        grid-template-columns: 1fr;
+    }
+}
