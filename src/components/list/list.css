@@ -30,6 +30,12 @@
 .name__block{
     display: flex;
     flex-wrap: wrap;
+    align-items: baseline;
+}
+
+.title{
+    color:rgba(0, 0, 0, 0.8);
+    font-size: 20px;
 }
 
 .firstName{

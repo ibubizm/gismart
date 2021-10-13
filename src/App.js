@@ -8,6 +8,7 @@ import { Pagination } from './components/pagination/pagination';
 function App() {
   const [listData, setListData] = useState([])
   const [visible, setVisible] = useState(false)
+  const [loading, setLoading] = useState(false)
 
   const [currentPage, setCurrentPage] = useState(0)
   const [itemsPerPage, setItemsPerPage] = useState(50)
@@ -16,6 +17,7 @@ function App() {
   const [formData, setFormData] = useState({})
 
   const getData = async (page) => {
+    setLoading(true)
     const response = await fetch(`https://dummyapi.io/data/v1/user?page=${page}&limit=${itemsPerPage}`, {
       method: 'GET',
       headers: {
@@ -26,31 +28,42 @@ function App() {
     const data = await response.json()
     setTotalItems(data.total)
     setListData(data.data)
+    setLoading(false)
+
   }
 
 
   useEffect(() => {
+
     getData(currentPage)
-  }, [currentPage, totalItems, formData])
+  }, [currentPage, formData])
 
   return (
     <div className="App">
-      {listData &&
-        <List list={listData} />
-      }
-      <Pagination
-        itemsPerPage={itemsPerPage}
-        totalItems={totalItems}
-        setCurrentPage={setCurrentPage}
-        currentPage={currentPage} />
       <div className="container" style={{ marginBottom: 30 }}>
         {visible ?
           <Form visible={setVisible} setFormData={setFormData} />
           :
-          <button className="btn" onClick={() => setVisible(true)}>create user</button>
+          <button className="btn create" onClick={() => setVisible(true)}>create user</button>
         }
 
       </div>
+      {loading ?
+        <div className="loader"></div>
+        :
+        <List list={listData} />
+      }
+      {
+        loading ? ''
+          :
+          <Pagination
+            itemsPerPage={itemsPerPage}
+            totalItems={totalItems}
+            setCurrentPage={setCurrentPage}
+            currentPage={currentPage} />
+
+      }
+
     </div>
   );
 }

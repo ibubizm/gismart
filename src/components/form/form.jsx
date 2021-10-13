@@ -113,56 +113,57 @@ export const Form = ({ visible, setFormData }) => {
     }
 
     return (
-
-        <div className="form">
-            <div className="header">
-                <h2 className="title">
-                    create user
-                </h2>
-                <div onClick={() => visible(false)} className="close">
-                    <img src={close} alt="close" />
+        <div className="modal">
+            <div className="form">
+                <div className="header">
+                    <h2 className="title">
+                        create user
+                    </h2>
+                    <div onClick={() => visible(false)} className="close">
+                        <img src={close} alt="close" />
+                    </div>
                 </div>
-            </div>
-            <input
-                onBlur={blureHandler}
-                name="firstName"
-                value={firstName}
-                onChange={(e) => nameHandler(e)}
-                type="text"
-                placeholder="first name" />
-            {(firstNameDirty && firstNameError) && <div style={{ color: 'red' }}>{firstNameError}</div>}
+                <input
+                    onBlur={blureHandler}
+                    name="firstName"
+                    value={firstName}
+                    onChange={(e) => nameHandler(e)}
+                    type="text"
+                    placeholder="first name" />
+                {(firstNameDirty && firstNameError) && <div style={{ color: 'red' }}>{firstNameError}</div>}
 
-            <input
-                onBlur={blureHandler}
-                name="lastName"
-                value={lastName}
-                onChange={(e) => lastNameHandler(e)}
-                type="text"
-                placeholder="last name" />
-            {(lastNameDirty && lastNameError) && <div style={{ color: 'red' }}>{lastNameError}</div>}
+                <input
+                    onBlur={blureHandler}
+                    name="lastName"
+                    value={lastName}
+                    onChange={(e) => lastNameHandler(e)}
+                    type="text"
+                    placeholder="last name" />
+                {(lastNameDirty && lastNameError) && <div style={{ color: 'red' }}>{lastNameError}</div>}
 
-            <input
-                onBlur={blureHandler}
-                name="email"
-                value={email}
-                onChange={emailHandler}
-                type="email"
-                placeholder="email" />
-            {(emailDirty && emailError) && <div style={{ color: 'red' }}>{emailError}</div>}
+                <input
+                    onBlur={blureHandler}
+                    name="email"
+                    value={email}
+                    onChange={emailHandler}
+                    type="email"
+                    placeholder="email" />
+                {(emailDirty && emailError) && <div style={{ color: 'red' }}>{emailError}</div>}
 
-            <input
-                onChange={(e) => setPicture(e.target.value)}
-                type="text"
-                value={picture}
-                placeholder="img url" />
+                <input
+                    onChange={(e) => setPicture(e.target.value)}
+                    type="text"
+                    value={picture}
+                    placeholder="img url" />
 
-            <select style={{ display: 'flex', padding: 5 }} onChange={titleHandler}>
-                {titles.map(t =>
-                    <option key={t} value={t}>{t}</option>
-                )}
-            </select>
-            <div className="buttons">
-                <button className="btn" disabled={!formValid} onClick={send}>submit</button>
+                <select style={{ display: 'flex', padding: 5 }} onChange={titleHandler}>
+                    {titles.map(t =>
+                        <option key={t} value={t}>{t}</option>
+                    )}
+                </select>
+                <div className="buttons">
+                    <button className="btn" disabled={!formValid} onClick={send}>submit</button>
+                </div>
             </div>
         </div>
     )
